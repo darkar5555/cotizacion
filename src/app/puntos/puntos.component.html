@@ -1,0 +1,329 @@
+<div class="container">
+  <div class="row">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Pagina Web
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <form [formGroup]="forma1" class="form-horizontal" (ngSubmit)="enviar()" action="">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">descripcion</label>
+                <div class="col-sm-10">
+                  <input formControlName="descripcion" type="input" class="form-control" placeholder="descripcion" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Horas</label>
+                <div class="col-sm-10">
+                  <input formControlName="horas" type="text" class="form-control" placeholder="horas" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Tarifa</label>
+                <div class="col-sm-10">
+                  <input formControlName="tarifa" type="text" class="form-control" placeholder="tarifa" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Total</label>
+                <div class="col-sm-10">
+                  <input formControlName="total" type="text" class="form-control" placeholder="total" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default" [disabled]="!forma1.valid">Enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+              Descripción del Proyecto
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <form [formGroup]="forma2" class="form-horizontal" (ngSubmit)="enviar1()" action="">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Cliente</label>
+                <div class="col-sm-10">
+                  <input formControlName="cliente" type="input" class="form-control" placeholder="cliente" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Descripción</label>
+                <div class="col-sm-10">
+                  <textarea formControlName="descripcion" class="form-control" rows="5" placeholder="descripcion" required></textarea>
+                  <!-- <input formControlName="descripcion" type="text" class="form-control" placeholder="descripcion" required> -->
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default" [disabled]="!forma2.valid">Enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+              Título de proyecto
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <form [formGroup]="forma3" class="form-horizontal" (ngSubmit)="enviar2()" action="">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Válido hasta</label>
+                <div class="col-sm-10">
+                  <input formControlName="valido" type="input" class="form-control" placeholder="valido hasta" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Cotización #</label>
+                <div class="col-sm-10">
+                  <textarea formControlName="numero" class="form-control" rows="5" placeholder="cotizacion" required></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default" [disabled]="!forma3.valid">Enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1>Proforma Online</h1>
+    <div class="botones">
+      <div class="boton">
+        Multimedia
+        <button (click)="downloadPDF()" mat-raised-button color="primary">
+          <i class="material-icons">add</i>
+        </button>
+        <button (click)="generatePDF()" mat-raised-button color="primary">
+          <i class="material-icons">add</i>
+          generar
+        </button>
+        <button (click)="quitarMultimedia()" mat-raised-button color="primary">
+          <i class="material-icons">remove</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="content">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="http://tmmedicas.com/tmmedicas2/images/oncologia/alogoamica.jpg" alt="amica">
+    </div>
+    <div class="col-md-offset-1 col-md-5">
+      <div class="titulo">
+        <h1>Cotización</h1>
+        <br>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Día:</td>
+                <td>{{this.today}}</td>
+              </tr>
+              <tr>
+                <td>Válido hasta:</td>
+                <td>{{cabecera.valido}}</td>
+              </tr>
+              <tr>
+                <td>Cotización #:</td>
+                <td>{{cabecera.numero}}</td>
+              </tr>
+              <tr>
+                <td>Ruc:</td>
+                <td>889492648</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Cotización/Descripción del Proyecto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{cliente.cliente}}</td>
+            <td>{{cliente.descripcion}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Horas</th>
+            <th>tarifa</th>
+            <th>total</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let precio of precios">
+          <tr>
+            <td>{{precio.descripcion}}</td>
+            <td>{{precio.horas}}</td>
+            <td>{{precio.tarifa}}</td>
+            <td>{{precio.total}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-7 sinPadding">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Instrucciones y notas especiales</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Una vez firmado, porfavor envie el documento a los correos electrónicos mencionados</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <td class="espacio">Subtotal</td>
+                  <td class="espacio">{{subtotal}}</td>
+                </tr>
+                <tr>
+                  <td class="espacio">Descuento</td>
+                  <td class="espacio">--</td>
+                </tr>
+                <tr>
+                  <td class="espacio">IGV</td>
+                  <td class="espacio">18%</td>
+                </tr>
+                <tr>
+                  <td class="espacio">IGV</td>
+                  <td class="espacio">{{igv}}</td>
+                </tr>
+                <tr>
+                  <td class="espacio"><strong>Total</strong></td>
+                  <td class="espacio"><strong>{{total}}</strong></td>
+                </tr>
+              </tbody>
+              </table>
+          </div>
+        </div>
+
+
+  </div>
+  <div class="row">
+    <p class="text-center">La información anterior no es una factura y sólo una estimación de los servicios / bienes descritos anteriormente.</p>
+    <p class="text-center">El pago será conforme al acuerdo que se tenga , que puede estar en relacion al avance.</p>
+    <p class="text-center">El aplicativo puede tener varios cambios en el proceso, esto sera coordinado con el cliente.</p>
+    <p class="text-center">Confirme su aceptación de este presupuesto firmando este documento.</p>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-3 bordear">
+      <br>
+      <p>Firma:</p>
+    </div>
+    <div class="col-md-offset-2 col-md-3 bordear">
+      <br>
+      <p>Fecha:</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <p class="text-center">
+    <strong>¡Gracias por hacer negocios!</strong>
+  </p>
+  <p class="text-center">Si tiene alguna pregunta relacionada con esta cotización, póngase en contacto con Rafael Zegarra 981852591</p>
+  <br>
+  <table>
+    <tbody>
+      <tr>
+        <td>Calle Lima 100, of-406, Yanahuara</td>
+        <td>Tel: 054-322865</td>
+        <td>Email: rafael.zegarra@amica.pe</td>
+        <td>www.amica.pe</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th class="naranja">Instrucciones y notas especiales</th>
+          <td class="espacio">Subtotal</td>
+          <td class="espacio">{{subtotal}}</td>
+        </tr>
+        <tr>
+          <td rowspan="4">Una vez firmado, porfavor envie el documento a los correos electrónicos mencionados</td>
+          <td class="espacio">Descuento</td>
+          <td class="espacio">--</td>
+        </tr>
+        <tr>
+          <td class="espacio">IGV</td>
+          <td class="espacio">18%</td>
+        </tr>
+        <tr>
+          <td class="espacio">IGV</td>
+          <td class="espacio">{{igv}}</td>
+        </tr>
+        <tr>
+          <td class="espacio">
+            <strong>Total</strong>
+          </td>
+          <td class="espacio">
+            <strong>{{total}}</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

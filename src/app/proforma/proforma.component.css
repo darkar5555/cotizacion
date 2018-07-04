@@ -1,0 +1,17 @@
+img{
+    width: 100%;
+    height: auto;
+}
+
+h1{
+    
+    color: #ff7b00;
+}
+
+.titulo{
+    text-align: right;
+}
+
+thead{
+    background: #ff7b00;
+}
